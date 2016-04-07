@@ -6,27 +6,22 @@
 
 require 'spec_helper'
 
-RSpec.configure do |config|
-  config.log_level = :debug
-  config.platform = 'windows'
-  config.version = '2012R2'
-end
-
 describe 'gocd-agent::default' do
-
-  before do
-    allow_any_instance_of(Chef::Recipe).to receive(:powershell_script).and_return(:garbage)
-  end
-
-  context 'When all attributes are default, on an unspecified platform' do
-    let(:chef_run) do
+  let(:chef_run) do
       runner = ChefSpec::ServerRunner.new
       runner.converge(described_recipe)
     end
 
-    it 'includes dependent recipes' do
-      expect(chef_run).to include_recipe('gocd-agent::install_agent')
-    end
-
+  it 'includes the `install_agent` recipe' do
+    expect(chef_run).to include_recipe('gocd-agent::install_agent')
   end
+
+  it 'includes the `configure_chef_directory` recipe' do
+    expect(chef_run).to include_recipe('gocd-agent::configure_chef_directory')
+  end
+  
+  it 'includes the `install_chef_dev_kit` recipe' do
+    expect(chef_run).to include_recipe('gocd-agent::install_chef_dev_kit')
+  end
+
 end

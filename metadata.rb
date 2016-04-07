@@ -1,4 +1,4 @@
-name 'gocd-agent'
+name 'gocd-agent-linux'
 maintainer 'Steven Wade'
 maintainer_email 'wades@parliament.uk'
 license 'all_rights'

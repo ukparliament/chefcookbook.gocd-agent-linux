@@ -12,10 +12,11 @@ provisioner:
 
 platforms:
   - name: ubuntu-14.04
-  - name: centos-7.1
 
 suites:
   - name: default
     run_list:
-      - recipe[template::default]
+      - recipe[gocd-agent::default]
     attributes:
+       gocd-agent-linux:
+        server-hostname: ''

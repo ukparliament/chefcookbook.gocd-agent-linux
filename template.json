@@ -3,10 +3,8 @@
     "version":           "{{env `VERSION`}}",
     "aws_access_key":    "{{env `AWS_ACCESS_KEY`}}",
     "aws_secret_key":    "{{env `AWS_SECRET_KEY`}}",
-    "name":              "gocd-agent",
+    "name":              "gocd-agent-linux",
     "region":            "us-west-2",
-    "vpc_id":            "vpc-a8a350cc",
-    "subnet_id":         "subnet-41abb436",
     "source_ami":        "ami-9abea4fb",
     "instance_type":     "t2.micro",
     "ssh_username":      "ubuntu"
@@ -35,7 +33,7 @@
     {
       "type":               "chef-solo",
       "cookbook_paths":      ["./berks-cookbooks"],
-      "run_list":           ["gocd-agent::default"]
+      "run_list":           ["gocd-agent-linux::default"]
     }
   ]
 }
