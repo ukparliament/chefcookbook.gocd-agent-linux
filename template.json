@@ -32,8 +32,9 @@
   "provisioners": [
     {
       "type":               "chef-solo",
-      "cookbook_paths":      ["./berks-cookbooks"],
-      "run_list":           ["gocd-agent-linux::default"]
+      "cookbook_paths":     ["./berks-cookbooks"],
+      "run_list":           ["gocd-agent-linux::default"],
+      "staging_directory":  "/cookbooks"
     }
   ]
 }
