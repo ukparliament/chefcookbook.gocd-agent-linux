@@ -12,3 +12,8 @@ include_recipe 'git'
 
 # Install Packer
 include_recipe 'sbp_packer'
+
+# Install the AWS CLI
+apt_package 'aws-cli' do
+  action :install
+end
