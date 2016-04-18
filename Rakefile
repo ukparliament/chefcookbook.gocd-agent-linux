@@ -22,7 +22,11 @@ task :packer, :source_ami_id do |_, args|
   sh 'rm -rf berks-cookbooks/*'
   sh 'berks vendor'
   sh 'packer validate template.json'
-  sh "packer build -var 'source_ami=#{args.source_ami_id}' template.json"
+  
+  # Execute Packer to store AMI ID in a file called 'ami-id'
+  sh "packer build -machine-readable -var 'source_ami=#{args.source_ami_id}' template.json | tee build.log"
+  @ami_id=`grep 'artifact,0,id' build.log | cut -d, -f6 | cut -d: -f2`.chomp
+  File.write('ami-id', @ami_id)
 end
 
 task default: ['test']
