@@ -23,6 +23,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Execute the cookbook
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe 'gocd-agent::default'
+    chef.add_recipe 'gocd-agent-linux::default'
   end
 end
