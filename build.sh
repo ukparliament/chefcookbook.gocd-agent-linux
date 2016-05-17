@@ -5,7 +5,7 @@
 
 ## Obtain the source AMI to use for our Packer build.
 base_ami_id=$(aws ec2 describe-images \
---filters Name=tag-key,Values=name Name=tag-value,Values=linux-ubuntu-base \
+--filters Name=tag-key,Values=name Name=tag-value,Values=linux-docker-base \
 --output text \
 --query 'Images[0].ImageId' \
 )
