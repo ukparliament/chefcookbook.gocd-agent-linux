@@ -1,5 +1,5 @@
 sudo groupadd docker
-sudo gpasswd -a go docker
+sudo useradd -G docker go
 sudo service docker restart
 
 echo "Done."
