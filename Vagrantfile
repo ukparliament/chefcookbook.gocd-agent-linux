@@ -21,6 +21,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = 2
   end
 
+  config.vm.provision :shell, inline: "curl -fsSL https://get.docker.com/ | sh"
+
   # Execute the cookbook
   config.vm.provision :chef_solo do |chef|
     # Temporary workaround for https://github.com/chef/chef/issues/4948
