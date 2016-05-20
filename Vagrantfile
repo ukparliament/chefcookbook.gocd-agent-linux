@@ -23,6 +23,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Execute the cookbook
   config.vm.provision :chef_solo do |chef|
+    # Temporary workaround for https://github.com/chef/chef/issues/4948
+    # TODO remove this line when the next version of Vagrant (> 1.8.1) is released.
+    chef.version = "12.10.40"
+
     chef.add_recipe 'gocd-agent-linux::default'
   end
 end
