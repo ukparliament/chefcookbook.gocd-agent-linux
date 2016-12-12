@@ -2,6 +2,7 @@ source 'https://supermarket.chef.io'
 
 metadata
 
+cookbook 'docker', '~> 2.13.0'
 cookbook 'gocd', '~> 1.1.1'
 cookbook 'chef-dk', '~> 3.1.0'
 cookbook 'git', '~> 4.4.1'
