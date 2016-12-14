@@ -1,6 +1,6 @@
 #!/bin/bash
 
-AWS_REGION=us-east-1
+export AWS_REGION=us-east-1
 
 ## Execute the CI task from the Rakefile
 #sudo $(which chef) exec rake ci
