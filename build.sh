@@ -11,7 +11,7 @@ base_ami_id=$(aws ec2 describe-images \
     --output text \
     --query 'Images[*].[ImageId,CreationDate]' \
     --region $AWS_REGION \
-    | sort -n -k 2 -r | cut -f1 | head -n1 \
+    | sort -k 2 -r | cut -f1 | head -n1 \
 )
 
 ## Build an AMI for this cookbook
