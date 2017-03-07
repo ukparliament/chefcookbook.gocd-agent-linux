@@ -11,8 +11,16 @@ base_ami_id=$(aws ec2 describe-images \
     --output text \
     --query 'Images[*].[ImageId,CreationDate]' \
     --region $AWS_REGION \
-    | sort -n -k 2 -r | cut -f1 | head -n1 \
+    | sort -k 2 -r | cut -f1 | head -n1 \
 )
 
 ## Build an AMI for this cookbook
 $(which chef) exec rake packer[$base_ami_id]
+
+declare -a GRANTS=(378030785168 638960451485 165162103257 337667769842 430811725848 210277190260)
+AMI_ID=$(cat ami-id)
+
+for g in ${GRANTS[@]}; do
+    echo Granting launch permission for $AMI_ID to $g
+    aws ec2 modify-image-attribute --image-id $AMI_ID --launch-permission "{\"Add\": [{\"UserId\":\"$g\"}]}"
+done
