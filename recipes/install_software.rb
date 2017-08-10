@@ -14,6 +14,5 @@ include_recipe 'git'
 include_recipe 'sbp_packer'
 
 # Install the AWS CLI
-apt_package 'awscli' do
-  action :install
-end
+python_runtime '2'
+python_package 'awscli'
